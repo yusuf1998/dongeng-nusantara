@@ -10,12 +10,23 @@
   left: 0;
   right: 0;
   z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
   color: #4a90e2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #3a7bc8;
 }
 
 .nav ul {
@@ -40,18 +51,40 @@
   color: #4a90e2;
 }
 
-.loginButton {
-  background-color: #4a90e2;
-  color: #ffffff;
-  border: none;
-  padding: 0.5rem 1rem;
+.authButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.loginButton,
+.signupButton {
+  padding: 8px 16px;
   border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.loginButton {
+  background-color: transparent;
+  color: #4a90e2;
+  border: 1px solid #4a90e2;
 }
 
 .loginButton:hover {
+  background-color: #4a90e2;
+  color: #ffffff;
+}
+
+.signupButton {
+  background-color: #4a90e2;
+  color: #ffffff;
+  border: 1px solid #4a90e2;
+}
+
+.signupButton:hover {
   background-color: #3a7bc8;
+  border-color: #3a7bc8;
 }
 
 .hamburger {
@@ -110,8 +143,17 @@
     display: flex;
   }
 
-  .loginButton {
-    display: none;
+  .authButtons {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .loginButton,
+  .signupButton {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
   }
 }
 

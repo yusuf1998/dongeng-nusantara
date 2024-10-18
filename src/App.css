@@ -71,6 +71,16 @@ button:hover {
   color: white;
 }
 
+.main-content {
+  padding-top: 60px; /* Adjust this value as needed */
+}
+
+.content-wrapper {
+  max-width: 1200px; /* Or any other max-width you prefer */
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .App-link {
   color: #61dafb;
 }
