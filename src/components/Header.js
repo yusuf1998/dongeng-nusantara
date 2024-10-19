@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
+import { FaSun, FaMoon, FaStar } from 'react-icons/fa';
 
 const Header = ({ isAuthenticated, onLogout }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -22,13 +28,17 @@ const Header = ({ isAuthenticated, onLogout }) => {
     };
   }, []);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle(styles.darkMode);
   };
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
-      <Link to="/" className={styles.logo}>Dongeng Nusantara</Link>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${isDarkMode ? styles.darkHeader : ''}`}>
+      <Link to="/" className={styles.logo}>
+        <FaStar className={styles.logoIcon} />
+        <span>Dongeng Nusantara</span>
+      </Link>
       <nav className={`${styles.nav} ${isMenuOpen ? styles.open : ''}`}>
         <ul>
           <li><Link to="/" onClick={closeMenu}>Home</Link></li>
@@ -57,6 +67,13 @@ const Header = ({ isAuthenticated, onLogout }) => {
         <span></span>
         <span></span>
         <span></span>
+      </button>
+      <button 
+        className={styles.darkModeToggle} 
+        onClick={toggleDarkMode}
+        aria-label="Toggle dark mode"
+      >
+        {isDarkMode ? <FaSun /> : <FaMoon />}
       </button>
     </header>
   );

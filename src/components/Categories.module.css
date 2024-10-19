@@ -1,19 +1,21 @@
 .categories {
-  padding: 4rem 2rem;
+  padding: 3rem 0;
   background-color: #f0f8ff;
 }
 
 .categories h2 {
   text-align: center;
   font-size: 2.5rem;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .subtitle {
   text-align: center;
   font-size: 1.2rem;
-  color: #34495e;
+  color: #666;
   margin-bottom: 2rem;
 }
 
@@ -21,23 +23,24 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .card {
-  background-color: #ffffff;
-  border-radius: 12px;
+  background-color: #fff;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: all 0.3s ease;
 }
 
 .imageContainer {
+  position: relative;
   height: 200px;
   overflow: hidden;
 }
@@ -50,51 +53,45 @@
 }
 
 .card:hover .image {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
-.content {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex-grow: 1;
+.iconWrapper {
+  position: absolute;
+  bottom: -25px;
+  right: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .icon {
   font-size: 2rem;
-  color: #3498db;
-  margin-bottom: 1rem;
+  color: #4a90e2;
 }
 
-.content h3 {
-  font-size: 1.5rem;
-  color: #2c3e50;
+.content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  color: #333;
   margin-bottom: 0.5rem;
 }
 
-.content p {
+.card p {
   font-size: 1rem;
-  color: #7f8c8d;
+  color: #666;
 }
 
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-}
-
-@media (max-width: 480px) {
-  .categories {
-    padding: 2rem 1rem;
-  }
-
-  .categories h2 {
-    font-size: 2rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
+    grid-template-columns: 1fr;
   }
 }

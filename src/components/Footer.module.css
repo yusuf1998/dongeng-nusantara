@@ -1,7 +1,7 @@
 .footer {
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  padding: 40px 0 20px;
+  background-color: #fef6e4;
+  padding: 2rem 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .footerContent {
@@ -10,93 +10,96 @@
   justify-content: space-around;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1rem;
 }
 
 .footerSection {
   flex: 1;
   min-width: 200px;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
-.footerSection h3 {
-  color: #3498db;
-  margin-bottom: 15px;
+.sectionTitle {
+  color: #f582ae;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.footerSection ul {
-  list-style: none;
+.quickLinks {
+  list-style-type: none;
   padding: 0;
 }
 
-.footerSection ul li {
-  margin-bottom: 10px;
+.quickLinks li {
+  margin-bottom: 0.5rem;
 }
 
-.footerSection a {
-  color: #ecf0f1;
+.quickLinks a {
+  color: #172c66;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footerSection a:hover {
-  color: #3498db;
+.quickLinks a:hover {
+  color: #f582ae;
 }
 
 .socialIcons {
   display: flex;
-  gap: 15px;
+  gap: 1rem;
 }
 
 .socialIcons a {
-  color: #ecf0f1;
-  font-size: 20px;
+  color: #8bd3dd;
+  font-size: 1.5rem;
   transition: color 0.3s ease;
 }
 
 .socialIcons a:hover {
-  color: #3498db;
+  color: #f582ae;
 }
 
 .newsletterForm {
   display: flex;
-  margin-top: 10px;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.newsletterForm input {
-  flex-grow: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 4px 0 0 4px;
+.emailInput {
+  padding: 0.5rem;
+  border: 2px solid #8bd3dd;
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-.newsletterForm button {
-  padding: 10px 15px;
-  background-color: #3498db;
-  color: #fff;
+.emailInput:focus {
+  outline: none;
+  border-color: #f582ae;
+  box-shadow: 0 0 0 3px rgba(245, 130, 174, 0.3);
+}
+
+.subscribeButton {
+  background-color: #8bd3dd;
+  color: #ffffff;
   border: none;
-  border-radius: 0 4px 4px 0;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.newsletterForm button:hover {
-  background-color: #2980b9;
+.subscribeButton:hover {
+  background-color: #f582ae;
 }
 
 .footerBottom {
   text-align: center;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #34495e;
-}
-
-@media (max-width: 768px) {
-  .footerContent {
-    flex-direction: column;
-  }
-  
-  .footerSection {
-    margin-bottom: 30px;
-  }
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e6e6e6;
+  color: #172c66;
 }

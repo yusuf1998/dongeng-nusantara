@@ -73,6 +73,8 @@ button:hover {
 
 .main-content {
   padding-top: 60px; /* Adjust this value as needed */
+  padding-bottom: 60px; /* Adjust this value as needed */
+
 }
 
 .content-wrapper {

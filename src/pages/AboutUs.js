@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './AboutUs.module.css';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function AboutUs() {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -11,41 +11,40 @@ function AboutUs() {
 
   const sections = [
     {
-      title: "Our Mission",
-      content: "At Dongeng Nusantara, we are dedicated to preserving and sharing the rich tapestry of Indonesian folklore. Our mission is to bring the magical world of Indonesian stories to a global audience, fostering cultural understanding and appreciation.",
-      icon: "🌟"
+      title: "Our Magic Mission",
+      content: "At Dongeng Nusantara, we're on a magical quest to share the wonderful stories of Indonesia with kids all around the world! We want to sprinkle the magic of Indonesian tales everywhere, helping everyone understand and love our amazing culture.",
+      icon: "🧙‍♂️"
     },
     {
-      title: "Our Vision",
-      content: "We envision a world where the diverse stories of Indonesia are celebrated, cherished, and passed down to future generations. Through our platform, we aim to create a digital sanctuary for these timeless tales.",
-      icon: "🔭"
+      title: "Our Dreamy Vision",
+      content: "We dream of a world where every child knows and loves the enchanting stories of Indonesia. Through our magical website, we're creating a special place where these timeless tales can live forever and ever!",
+      icon: "🔮"
     },
     {
-      title: "Our Team",
+      title: "Our Fantastic Team",
       content: (
         <>
-          <p>Dongeng Nusantara is brought to you by a passionate team of storytellers, researchers, and technologists. We combine traditional knowledge with modern technology to create an immersive storytelling experience.</p>
+          <p>Dongeng Nusantara is brought to life by a team of magical storytellers, curious explorers, and tech wizards. We use our special powers to bring you the most exciting stories!</p>
           <ul>
-            <li>Putri Sari - Founder & Chief Storyteller</li>
-            <li>Budi Prakoso - Head of Research</li>
-            <li>Rina Wijaya - Lead Developer</li>
-            <li>Ahmad Yusuf - Cultural Liaison</li>
+            <li>Yusuf Habibi - Master Storyteller & Founder</li>
+            <li>Astri Ifah - Chief Explorer of Tales</li>
+            <li>Althaf Rasyafariq Habibi - Wizard of the Web</li>
           </ul>
         </>
       ),
-      icon: "👥"
+      icon: "🧚‍♂️"
     },
     {
-      title: "Our Values",
+      title: "Our Treasure Chest of Values",
       content: (
         <ul>
-          <li>Cultural Preservation</li>
-          <li>Educational Empowerment</li>
-          <li>Inclusive Storytelling</li>
-          <li>Digital Innovation</li>
+          <li>Keeping Our Stories Alive Forever</li>
+          <li>Learning Through Fun Adventures</li>
+          <li>Stories for Every Little Hero</li>
+          <li>Making Magic with Technology</li>
         </ul>
       ),
-      icon: "🎭"
+      icon: "🏴‍☠️"
     }
   ];
 
@@ -56,7 +55,7 @@ function AboutUs() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className={styles.title}>About Dongeng Nusantara</h1>
+      <h1 className={styles.title}>Welcome to the Magical World of Dongeng Nusantara!</h1>
       
       {sections.map((section, index) => (
         <motion.section 
@@ -69,31 +68,39 @@ function AboutUs() {
           <h2 onClick={() => toggleSection(index)}>
             <span className={styles.icon}>{section.icon}</span>
             {section.title}
-            <span className={styles.expandIcon}>{expandedSection === index ? '▲' : '▼'}</span>
-          </h2>
-          {expandedSection === index && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className={styles.content}
+            <motion.span 
+              className={styles.expandIcon}
+              animate={{ rotate: expandedSection === index ? 180 : 0 }}
             >
-              {typeof section.content === 'string' ? <p>{section.content}</p> : section.content}
-            </motion.div>
-          )}
+              🔽
+            </motion.span>
+          </h2>
+          <AnimatePresence>
+            {expandedSection === index && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className={styles.content}
+              >
+                {typeof section.content === 'string' ? <p>{section.content}</p> : section.content}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.section>
       ))}
 
       <section className={styles.contactSection}>
-        <h2>Get in Touch</h2>
-        <p>We'd love to hear from you! Whether you have a story to share, a question to ask, or just want to say hello, feel free to reach out to us.</p>
+        <h2>Send Us a Magic Message!</h2>
+        <p>Do you have a fantastic story to share? A curious question to ask? Or just want to say "Halo"? Wave your magic wand and get in touch with us!</p>
         <motion.a 
-          href="mailto:info@dongengnusantara.com"
+          href="mailto:magic@dongengnusantara.com"
           className={styles.contactButton}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, rotate: [0, -5, 5, -5, 0] }}
           whileTap={{ scale: 0.95 }}
         >
-          Contact Us
+          Cast Your Message Spell!
         </motion.a>
       </section>
     </motion.div>

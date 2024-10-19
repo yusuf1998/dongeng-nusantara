@@ -5,20 +5,35 @@ import styles from './FeaturedStories.module.css';
 const StoryCard = ({ title, summary, rating, image, author }) => (
   <motion.div 
     className={styles.card}
-    whileHover={{ scale: 1.05 }}
+    whileHover={{ scale: 1.05, rotate: 2 }}
     whileTap={{ scale: 0.95 }}
   >
-    <img src={image} alt={title} className={styles.storyImage} />
+    <div className={styles.imageWrapper}>
+      <img src={image} alt={title} className={styles.storyImage} />
+      <motion.div 
+        className={styles.imageOverlay}
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+      >
+        <span className={styles.readMore}>Read More</span>
+      </motion.div>
+    </div>
     <div className={styles.cardContent}>
       <h3>{title}</h3>
       <p className={styles.author}>By {author}</p>
       <p className={styles.summary}>{summary}</p>
       <div className={styles.rating}>
         {[...Array(5)].map((_, i) => (
-          <span key={i} className={i < rating ? styles.starFilled : styles.starEmpty}>★</span>
+          <motion.span 
+            key={i} 
+            className={i < rating ? styles.starFilled : styles.starEmpty}
+            whileHover={{ scale: 1.2, rotate: 360 }}
+            transition={{ duration: 0.3 }}
+          >
+            {i < rating ? '🌟' : '⭐'}
+          </motion.span>
         ))}
       </div>
-      <button className={styles.readMore}>Read More</button>
     </div>
   </motion.div>
 );
@@ -57,10 +72,23 @@ const FeaturedStories = () => {
 
   return (
     <section className={styles.featured} id="featured-stories">
-      <h2>Featured Stories</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Magical Stories for You
+      </motion.h2>
       <div className={styles.grid}>
         {stories.map((story, index) => (
-          <StoryCard key={index} {...story} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <StoryCard {...story} />
+          </motion.div>
         ))}
       </div>
     </section>

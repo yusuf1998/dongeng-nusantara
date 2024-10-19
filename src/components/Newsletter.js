@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import styles from './Newsletter.module.css';
 
 const Newsletter = () => {
@@ -8,39 +9,56 @@ const Newsletter = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Implement newsletter subscription logic here
-    // This is a mock implementation. Replace with actual API call in production.
     if (email.includes('@')) {
       console.log('Subscribing email:', email);
-      setMessage('Thank you for subscribing!');
+      setMessage('Yay! You\'re now part of our magical story circle!');
       setIsError(false);
       setEmail('');
     } else {
-      setMessage('Please enter a valid email address.');
+      setMessage('Oops! That doesn\'t look like a proper email. Can you check it again?');
       setIsError(true);
     }
   };
 
   return (
-    <div className={styles.newsletter}>
-      <h3>Subscribe to Our Newsletter</h3>
-      <p>Stay updated with our latest stories and folklore insights!</p>
-      <form onSubmit={handleSubmit}>
-        <input
+    <motion.div 
+      className={styles.newsletter}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <h3 className={styles.title}>Join Our Magical Story Circle!</h3>
+      <p className={styles.description}>Be the first to hear about new adventures and folkore treasures!</p>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <motion.input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email"
+          placeholder="Your magical email address"
           required
+          className={styles.input}
+          whileFocus={{ scale: 1.05 }}
         />
-        <button type="submit">Subscribe</button>
+        <motion.button 
+          type="submit" 
+          className={styles.button}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Join the Circle
+        </motion.button>
       </form>
       {message && (
-        <p className={isError ? styles.errorMessage : styles.successMessage}>
+        <motion.p 
+          className={isError ? styles.errorMessage : styles.successMessage}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
           {message}
-        </p>
+        </motion.p>
       )}
-    </div>
+    </motion.div>
   );
 };
 

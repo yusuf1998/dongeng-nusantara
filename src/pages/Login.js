@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import styles from './Login.module.css';
+import { FaUser, FaLock, FaMagic } from 'react-icons/fa';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
@@ -13,69 +14,77 @@ function Login({ onLogin }) {
     setError('');
 
     if (!username || !password) {
-      setError('Please enter both username and password.');
+      setError('Oops! Please enter your magical username and secret password.');
       return;
     }
 
     try {
-      // Here you would typically send a request to your backend
-      // For example:
-      // const response = await fetch('/api/login', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ username, password }),
-      // });
-      // const data = await response.json();
-      // if (response.ok) {
-      //   onLogin(data);
-      // } else {
-      //   throw new Error(data.message);
-      // }
-
-      // For now, we'll just simulate a successful login
+      // Simulating a successful login
       onLogin({ username });
     } catch (err) {
-      setError('Login failed. Please check your credentials and try again.');
+      setError('Oh no! The magic spell failed. Please check your wizard credentials and try again.');
     }
   };
 
   return (
     <motion.div 
       className={styles.loginContainer}
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className={styles.title}>Welcome Back</h1>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <h1 className={styles.title}>Welcome to the Magical Realm!</h1>
+      <motion.form 
+        onSubmit={handleSubmit} 
+        className={styles.form}
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+      >
         <div className={styles.inputGroup}>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">
+            <FaUser className={styles.icon} /> Wizard Name
+          </label>
           <input 
             id="username"
             type="text" 
             value={username} 
             onChange={(e) => setUsername(e.target.value)} 
-            placeholder="Enter your username" 
+            placeholder="Enter your magical name" 
             required
           />
         </div>
         <div className={styles.inputGroup}>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">
+            <FaLock className={styles.icon} /> Secret Spell
+          </label>
           <input 
             id="password"
             type="password" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)} 
-            placeholder="Enter your password" 
+            placeholder="Enter your secret spell" 
             required
           />
         </div>
         {error && <p className={styles.error}>{error}</p>}
-        <button type="submit" className={styles.submitButton}>Login</button>
-      </form>
-      <p className={styles.registerPrompt}>
-        Don't have an account? <Link to="/register">Sign up here</Link>
-      </p>
+        <motion.button 
+          type="submit" 
+          className={styles.submitButton}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <FaMagic className={styles.buttonIcon} /> Cast the Login Spell!
+        </motion.button>
+      </motion.form>
+      <motion.p 
+        className={styles.registerPrompt}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+      >
+        New to the magical world? <Link to="/register">Join the Wizarding Academy!</Link>
+      </motion.p>
     </motion.div>
   );
 }

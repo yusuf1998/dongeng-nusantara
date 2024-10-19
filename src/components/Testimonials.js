@@ -10,11 +10,37 @@ const Testimonial = ({ name, quote, avatar, role }) => (
     exit={{ opacity: 0, y: -50 }}
     transition={{ duration: 0.5 }}
   >
-    <img src={avatar} alt={name} className={styles.avatar} />
-    <blockquote className={styles.quote}>{quote}</blockquote>
+    <motion.div 
+      className={styles.avatarWrapper}
+      whileHover={{ scale: 1.1, rotate: 5 }}
+    >
+      <img src={avatar} alt={name} className={styles.avatar} />
+    </motion.div>
+    <motion.blockquote 
+      className={styles.quote}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.2, duration: 0.5 }}
+    >
+      {quote}
+    </motion.blockquote>
     <footer className={styles.footer}>
-      <cite className={styles.name}>{name}</cite>
-      <span className={styles.role}>{role}</span>
+      <motion.cite 
+        className={styles.name}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+      >
+        {name}
+      </motion.cite>
+      <motion.span 
+        className={styles.role}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+      >
+        {role}
+      </motion.span>
     </footer>
   </motion.div>
 );
@@ -63,29 +89,50 @@ const Testimonials = () => {
 
   return (
     <section className={styles.testimonials}>
-      <h2 className={styles.title}>What Our Readers Say</h2>
+      <motion.h2 
+        className={styles.title}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        What Our Little Readers Say
+      </motion.h2>
       <div className={styles.carousel}>
         <AnimatePresence mode="wait">
           <Testimonial key={currentTestimonial} {...testimonials[currentTestimonial]} />
         </AnimatePresence>
       </div>
       <div className={styles.navigation}>
-        <button onClick={prevTestimonial} className={styles.navButton} aria-label="Previous testimonial">
-          &larr;
-        </button>
+        <motion.button 
+          onClick={prevTestimonial} 
+          className={styles.navButton} 
+          aria-label="Previous testimonial"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          ←
+        </motion.button>
         <div className={styles.indicators}>
           {testimonials.map((_, index) => (
-            <button
+            <motion.button
               key={index}
               className={`${styles.indicator} ${index === currentTestimonial ? styles.active : ''}`}
               onClick={() => setCurrentTestimonial(index)}
               aria-label={`Go to testimonial ${index + 1}`}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.8 }}
             />
           ))}
         </div>
-        <button onClick={nextTestimonial} className={styles.navButton} aria-label="Next testimonial">
-          &rarr;
-        </button>
+        <motion.button 
+          onClick={nextTestimonial} 
+          className={styles.navButton} 
+          aria-label="Next testimonial"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          →
+        </motion.button>
       </div>
     </section>
   );

@@ -18,27 +18,22 @@ const Home = () => {
       <HeroSection />
       <main className={styles.mainContent}>
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Featured Stories</h2>
           <FeaturedStories />
         </section>
         
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Explore Categories</h2>
           <Categories />
         </section>
         
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>What Our Readers Say</h2>
           <Testimonials />
         </section>
         
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Latest from Our Blog</h2>
           <RecentBlogPosts />
         </section>
         
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>Stay Updated</h2>
           <Newsletter />
         </section>
       </main>

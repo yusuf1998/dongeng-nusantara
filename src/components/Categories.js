@@ -6,15 +6,21 @@ import styles from './Categories.module.css';
 
 const CategoryCard = ({ title, description, image, icon: Icon }) => (
   <motion.div
-    whileHover={{ scale: 1.05 }}
+    whileHover={{ scale: 1.05, rotate: 2 }}
     whileTap={{ scale: 0.95 }}
   >
     <Link to={`/category/${title.toLowerCase().replace(' ', '-')}`} className={styles.card}>
       <div className={styles.imageContainer}>
         <img src={image} alt={title} className={styles.image} />
+        <motion.div 
+          className={styles.iconWrapper}
+          whileHover={{ rotate: 360 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Icon className={styles.icon} aria-hidden="true" />
+        </motion.div>
       </div>
       <div className={styles.content}>
-        <Icon className={styles.icon} aria-hidden="true" />
         <h3>{title}</h3>
         <p>{description}</p>
       </div>
@@ -32,16 +38,36 @@ const Categories = () => {
 
   return (
     <section className={styles.categories} id="categories">
-      <h2>Explore Wonderful Stories</h2>
-      <p className={styles.subtitle}>Dive into amazing Indonesian tales!</p>
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Explore Wonderful Stories
+      </motion.h2>
+      <motion.p 
+        className={styles.subtitle}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        Dive into amazing Indonesian tales!
+      </motion.p>
       <motion.div 
         className={styles.grid}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
       >
         {categories.map((category, index) => (
-          <CategoryCard key={index} {...category} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+          >
+            <CategoryCard {...category} />
+          </motion.div>
         ))}
       </motion.div>
     </section>

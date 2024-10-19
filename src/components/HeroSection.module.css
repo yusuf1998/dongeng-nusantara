@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
   overflow: hidden;
 }
 
@@ -16,7 +15,6 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  z-index: -2;
 }
 
 .backgroundOverlay {
@@ -25,23 +23,27 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .content {
+  position: relative;
   text-align: center;
+  color: #fff;
   z-index: 1;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .subtitle {
   font-size: 1.5rem;
   margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .cta {
@@ -52,43 +54,58 @@
 
 .button {
   padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
   text-decoration: none;
-  border-radius: 5px;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .primary {
-  background-color: #ff6b6b;
-  color: white;
+  background-color: #FFD700;
+  color: #333;
 }
 
 .secondary {
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 .icon {
   margin-left: 0.5rem;
+  font-size: 1.4rem;
 }
 
 .imageGallery {
   position: absolute;
   bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: center;
   gap: 1rem;
 }
 
-.galleryImage {
+.galleryImageWrapper {
   width: 100px;
   height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 3px solid #fff;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .scrollIndicator {
@@ -99,30 +116,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
-  font-size: 0.9rem;
+  color: #fff;
+  font-size: 1rem;
 }
 
 .scrollArrow {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-top: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 2rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .button {
-    padding: 0.6rem 1rem;
-  }
-
-  .galleryImage {
-    width: 80px;
-    height: 80px;
-  }
 }
