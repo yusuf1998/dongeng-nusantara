@@ -1,0 +1,57 @@
+.privacyContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Roboto', sans-serif;
+  color: #3d405b;
+  background-color: #f2f7f5;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #f2cc8f;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  color: #81b29a;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contact {
+  text-align: center;
+  font-style: italic;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .privacyContainer {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+}

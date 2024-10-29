@@ -15,6 +15,17 @@
   height: 100%;
   background-size: cover;
   background-position: center;
+  z-index: -2;
+}
+
+.parallaxOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 100%);
+  z-index: -1;
 }
 
 .backgroundOverlay {
@@ -23,27 +34,41 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
+  z-index: -1;
+}
+
+.floatingElement {
+  position: absolute;
+  font-size: 2rem;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .content {
-  position: relative;
   text-align: center;
-  color: #fff;
-  z-index: 1;
+  color: white;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
 }
 
 .title {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.description {
+  font-size: 1.2rem;
   margin-bottom: 2rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .cta {
@@ -54,58 +79,27 @@
 
 .button {
   padding: 0.8rem 1.5rem;
-  font-size: 1.2rem;
-  border-radius: 50px;
+  font-size: 1rem;
+  border-radius: 30px;
   text-decoration: none;
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
-  font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .primary {
-  background-color: #FFD700;
-  color: #333;
+  background-color: #f582ae;
+  color: white;
 }
 
 .secondary {
-  background-color: #4CAF50;
-  color: #fff;
-}
-
-.button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
 }
 
 .icon {
   margin-left: 0.5rem;
-  font-size: 1.4rem;
-}
-
-.imageGallery {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1rem;
-}
-
-.galleryImageWrapper {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border: 3px solid #fff;
-}
-
-.galleryImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .scrollIndicator {
@@ -116,11 +110,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #fff;
+  color: white;
   font-size: 1rem;
 }
 
 .scrollArrow {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-top: 0.5rem;
 }
